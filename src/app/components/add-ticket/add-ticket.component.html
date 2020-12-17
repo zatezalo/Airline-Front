@@ -1,3 +1,37 @@
 <div class="container">
     <h2 class="mb-3">Add Ticket</h2>
+    <form [formGroup]="addTicketForm" (ngSubmit)="submitForm(addTicketForm.value)">
+
+
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Flight</label>
+                </div>
+                <select formControlName="flight" class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedF">
+                    <option selected>Choose...</option>
+                    <option [value]="flight" *ngFor="let flight of flights">{{ flight }}</option>
+                </select>
+            </div>
+
+            <div class="text-danger" *ngIf="flight.errors?.required">Flight is required! </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Flight</label>
+                </div>
+                <select formControlName="company" class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedF">
+                    <option selected>Choose...</option>
+                    <option [value]="company" *ngFor="let company of companies">{{ company }}</option>
+                </select>
+            </div>
+
+            <div class="text-danger" *ngIf="company.errors?.required">Flight is required! </div>
+        </div> 
+
+        <button type="submit" class="btn btn-primary" [disabled]="!addTicketForm.valid">Make user</button>
+
+    </form>
 </div>
