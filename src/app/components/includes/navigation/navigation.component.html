@@ -1,0 +1,8 @@
+<nav class="navbar navbar-dark bg-dark justify-content-between">
+    <a class="navbar-brand">Airline</a>
+    <form class="form-inline">
+        <a class="navbar-brand">{{ user.username }}</a>
+        <a class="navbar-brand ">{{ user.userType }}</a>
+      <button (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log out</button>
+    </form>
+</nav>

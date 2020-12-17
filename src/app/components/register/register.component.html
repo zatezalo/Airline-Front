@@ -1,0 +1,33 @@
+<div class="container col-sm-4 mt-3 ">
+    <h2 class="text-center mb-3">User registration</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm.value)">
+
+        <div class="form-group">
+            <input type="text" class="form-control"  placeholder="Enter username" formControlName="username">
+            <div class="text-danger" *ngIf="username.errors?.required"> Username is required! </div>
+        </div>
+
+        <div class="form-group">
+            <input type="password"  class="form-control"  placeholder="Enter password" formControlName="password">
+            <div class="text-danger" *ngIf="password.errors?.required"> Password is required! </div>
+            <div class="text-danger" *ngIf="password.errors?.minlength"> Password has to be at least 6 characters long! </div>
+            <div class="text-danger" *ngIf="password.errors?.pattern"> Password has to contain a number </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">User Type</label>
+                </div>
+                <select formControlName="userType" class="custom-select" id="inputGroupSelect01" [(ngModel)]="selected">
+                    <option selected>Choose...</option>
+                    <option [value]="item.val" *ngFor="let item of items">{{ item.name }}</option>
+                </select>
+                </div>
+            <div class="text-danger" *ngIf="userType.errors?.required"> User type is required! </div>
+        </div> 
+
+        <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Make user</button>
+
+    </form>
+</div>

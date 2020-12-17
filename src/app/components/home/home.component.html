@@ -1,0 +1,8 @@
+<app-navigation></app-navigation>
+
+<h1 class="text-center">HOME</h1>
+
+
+<app-register *ngIf="user.userType === 'ADMIN'"></app-register>
+<app-add-ticket *ngIf="user.userType === 'ADMIN'"></app-add-ticket>
+
