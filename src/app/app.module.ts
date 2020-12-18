@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavigationComponent } from './components/includes/navigation/navigation.component';
 import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
+import { AllTicketsComponent } from './components/all-tickets/all-tickets.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,16 @@ import { AddTicketComponent } from './components/add-ticket/add-ticket.component
     RegisterComponent,
     HomeComponent,
     NavigationComponent,
-    AddTicketComponent
+    AddTicketComponent,
+    AllTicketsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

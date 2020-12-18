@@ -1,7 +1,8 @@
+import { City } from "./city.model"
+
 export class Flight {
     id: number
-    name: string
-    origin: string
-    destination: string
-    tickets: []
+    origin: City
+    destination: City
+    tickets: Flight[]
 }

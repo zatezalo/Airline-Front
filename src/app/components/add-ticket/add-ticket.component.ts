@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { Company } from 'src/app/model/company.model';
 import { Ticket } from 'src/app/model/ticket.model';
 import { TicketService } from 'src/app/services/ticket/ticket.service';
+import {NgbDate, NgbCalendar, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
+import { Flight } from 'src/app/model/flight.model';
+import { FlightService } from 'src/app/services/flight/flight.service';
+import { CompanyService } from 'src/app/services/company/company.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-ticket',
@@ -13,34 +18,47 @@ import { TicketService } from 'src/app/services/ticket/ticket.service';
 export class AddTicketComponent implements OnInit {
 
   public addTicketForm: FormGroup;
+  depart: Date | null;
+  comeBack: Date | null;
 
-  flights: Ticket[] = [];
-  companies: Company[] = [];
+  flights: Flight[] = [];
   selectedF: number = 1;
+  companies: Company[] = [];
+  selectedC: number = 1;
   
-  constructor(private ticketService: TicketService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, private flightService: FlightService, private companyService: CompanyService,
+              private ticketService: TicketService, private router: Router, private formBuilder: FormBuilder) {
     this.addTicketForm = this.formBuilder.group({
-      flight: ['', Validators.required],
-      company: ['', Validators.required]
+      flightId: ['', Validators.required],
+      companyId: ['', Validators.required],
+      depart: this.depart,
+      comeBack: this.comeBack
     })
   }
 
   ngOnInit(): void {
+    this.flightService.getFlights().subscribe(flights => {
+      this.flights = flights;
+    })
+
+    this.companyService.getCompanies().subscribe(companies => {
+      this.companies = companies;
+    })
   }
 
   public get flight() {
-    return this.addTicketForm.get('flight');
+    return this.addTicketForm.get('flightId');
   }
 
   public get company() {
-    return this.addTicketForm.get('company');
+    return this.addTicketForm.get('companyId');
   }
 
   public submitForm(credentials) {
-    console.log(credentials);
-    /*this.ticketService.register(credentials).subscribe(data => {
+    //console.log(credentials);
+    this.ticketService.addTicket(credentials).subscribe(data => {
       console.log(data);
       //this.router.navigate(['/']);
-    })*/
+    })
   }
 }

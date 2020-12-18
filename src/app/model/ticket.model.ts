@@ -1,9 +1,12 @@
+import { Company } from "./company.model"
+import { Flight } from "./flight.model"
+
 export class Ticket {
   id: number
-  company: string
+  company: Company
   oneWay: boolean
   depart: Date
   comeBack: Date
-  flight: number
+  flight: Flight
   availableTickets: number
 }

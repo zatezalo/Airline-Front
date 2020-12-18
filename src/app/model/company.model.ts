@@ -1,5 +1,4 @@
 export class Company {
-    username: string
-    userType: string
-    bookings: []
+    id: number
+    name: string
 }

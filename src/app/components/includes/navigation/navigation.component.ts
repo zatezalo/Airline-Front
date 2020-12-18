@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class NavigationComponent implements OnInit {
   public user: User;
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.user = new User();
   }
 
@@ -21,7 +22,8 @@ export class NavigationComponent implements OnInit {
   }
 
   logout(){
-    localStorage.removeItem("jwt")
+    localStorage.removeItem("jwt");
+    this.router.navigate(['/']);
   }
 
 }

@@ -2,7 +2,12 @@
 
 <h1 class="text-center">HOME</h1>
 
+<div class="container mb-5">
+    <div class="row">
+        <app-register class="col" *ngIf="user.userType === 'ADMIN'"></app-register>
+        <app-add-ticket class="col" *ngIf="user.userType === 'ADMIN'"></app-add-ticket>
+    </div>
+</div>
 
-<app-register *ngIf="user.userType === 'ADMIN'"></app-register>
-<app-add-ticket *ngIf="user.userType === 'ADMIN'"></app-add-ticket>
+<app-all-tickets></app-all-tickets>
 
