@@ -8,5 +8,5 @@ export class Ticket {
   depart: Date
   comeBack: Date
   flight: Flight
-  availableTickets: number
+  availableCount: number
 }

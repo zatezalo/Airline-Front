@@ -26,7 +26,9 @@ export class TicketService {
       companyId: credentials.companyId,
       flightId: credentials.flightId,
       depart: credentials.depart,
-      comeBack: credentials.comeBack
+      comeBack: credentials.comeBack,
+      oneWay: credentials.oneWay,
+      availableCount: credentials.availableCount
     }, httpOptions)
   }
 

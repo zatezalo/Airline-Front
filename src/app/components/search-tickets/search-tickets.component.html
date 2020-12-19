@@ -1,0 +1,53 @@
+<form class="" [formGroup]="searchForm" (ngSubmit)="submitForm(searchForm.value)">
+    <div class="row">
+        <div class="col form-group">
+            <div class="input-group ">
+                <div class="input-group-prepend">
+                    <label for="company" class="input-group-text">Company</label>
+                </div>
+                <input class="form-control" type="text"  id="company" name="company" formControlName="company">
+            </div>
+        </div>
+
+        <div class="col form-group">
+            <div class="input-group ">
+                <div class="input-group-prepend">
+                    <label for="origin" class="input-group-text">Origin</label>
+                </div>
+                <input class="form-control" type="text"  id="origin" name="origin" formControlName="origin">
+            </div>
+        </div>
+
+        <div class="col form-group">
+            <div class="input-group ">
+                <div class="input-group-prepend">
+                    <label for="destination" class="input-group-text">Destination</label>
+                </div>
+                <input class="form-control" type="text"  id="destination" name="destination" formControlName="destination">
+            </div>
+        </div>
+
+        <div class="col form-group">
+            <div class="input-group ">
+                <div class="input-group-prepend">
+                    <label for="date" class="input-group-text">From Date</label>
+                </div>
+                <input class="custom-select" type="date"  id="date" name="fromDate" formControlName="depart">
+            </div>
+        </div>
+
+        <div class="col form-group">
+            <div class="input-group ">
+                <div class="input-group-prepend">
+                    <label for="date" class="input-group-text">To Date</label>
+                </div>
+                <input class="custom-select" type="date"  id="date" name="toDate" formControlName="comeBack">
+            </div>
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!searchForm.valid">Sarch For Tickets</button>
+
+    
+</form>

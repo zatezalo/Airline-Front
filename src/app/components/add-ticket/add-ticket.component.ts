@@ -31,8 +31,10 @@ export class AddTicketComponent implements OnInit {
     this.addTicketForm = this.formBuilder.group({
       flightId: ['', Validators.required],
       companyId: ['', Validators.required],
-      depart: this.depart,
-      comeBack: this.comeBack
+      depart: ['', Validators.required],
+      comeBack: ['', Validators.required],
+      availableCount: [0, Validators.required],
+      oneWay: [false]
     })
   }
 
@@ -55,10 +57,12 @@ export class AddTicketComponent implements OnInit {
   }
 
   public submitForm(credentials) {
-    //console.log(credentials);
+    console.log(credentials);
     this.ticketService.addTicket(credentials).subscribe(data => {
       console.log(data);
       //this.router.navigate(['/']);
+      location.reload();
     })
+    location.reload();
   }
 }

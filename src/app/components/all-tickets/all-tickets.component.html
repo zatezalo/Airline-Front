@@ -22,11 +22,11 @@
                 <td>{{ ticket.depart | date:'d/MMMM/y' }}</td>
                 <td>{{ ticket.comeBack | date:'d/MMMM/y' }}</td>
                 <td>{{ ticket.oneWay }}</td>
-                <td>{{ ticket.availableTickets }}</td>
+                <td>{{ ticket.availableCount }}</td>
                 <td class="">
-                    <a href="#" class="btn btn-primary text-light "><i class="far fa-eye"></i></a>
-                    <a href="#" class="btn btn-success text-light "><i class="fas fa-edit"></i></a>
-                    <a href="#" class="btn btn-danger text-light "><i class="far fa-trash-alt"></i></a>
+                    <a *ngIf="user.userType === 'USER'" href="#" class="btn btn-success text-light "><i class="fas fa-plus"></i></a>
+                    <a *ngIf="user.userType === 'ADMIN'" href="#" class="btn btn-success text-light "><i class="fas fa-edit"></i></a>
+                    <a *ngIf="user.userType === 'ADMIN'" href="#" class="btn btn-danger text-light "><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
         </tbody>
