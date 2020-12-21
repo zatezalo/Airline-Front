@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ticket } from 'src/app/model/ticket.model';
@@ -32,7 +32,38 @@ export class TicketService {
     }, httpOptions)
   }
 
+  editTicket(credentials) {
+    console.log(credentials);
+    return this.http.put(this.baseUrl + 'editTicket', {
+      ticketId: credentials.ticketId,
+      companyId: credentials.companyId,
+      flightId: credentials.flightId,
+      depart: credentials.depart,
+      comeBack: credentials.comeBack,
+      oneWay: credentials.oneWay,
+      availableCount: credentials.availableCount
+    }, httpOptions)
+  }
+
   getAllTickets(): Observable<Ticket[]> {
+    
     return this.http.get<Ticket[]>(this.baseUrl + 'getAllTickets', httpOptions);
+  }
+
+  deleteTicket(id) {
+    let url = `http://localhost:8080/api/ticket/${id}`;
+    console.log(url)
+    return this.http.delete(`http://localhost:8080/api/ticket/${id}` , httpOptions)
+    .subscribe((returnObject: string) => {
+      console.log(returnObject)
+      location.reload();
+    }, (error: HttpErrorResponse) => {
+      console.log(error);
+      location.reload();
+    });
+  }
+
+  getTicket(id):Observable<Ticket> {
+    return this.http.get<Ticket>(`http://localhost:8080/api/ticket/getTicket/${id}` , httpOptions);
   }
 }

@@ -1,29 +1,27 @@
 <form class="" [formGroup]="searchForm" (ngSubmit)="submitForm(searchForm.value)">
+
     <div class="row">
         <div class="col form-group">
-            <div class="input-group ">
+            <div class="input-group">
                 <div class="input-group-prepend">
-                    <label for="company" class="input-group-text">Company</label>
+                    <label class="input-group-text" for="inputGroupSelect01">Origin</label>
                 </div>
-                <input class="form-control" type="text"  id="company" name="company" formControlName="company">
+                <select formControlName="origin" class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedO">
+                    <option selected>Choose...</option>
+                    <option [value]="o.id" *ngFor="let o of origin">{{ o.name }}</option>
+                </select>
             </div>
         </div>
 
         <div class="col form-group">
-            <div class="input-group ">
+            <div class="input-group">
                 <div class="input-group-prepend">
-                    <label for="origin" class="input-group-text">Origin</label>
+                    <label class="input-group-text" for="inputGroupSelect01">Destination</label>
                 </div>
-                <input class="form-control" type="text"  id="origin" name="origin" formControlName="origin">
-            </div>
-        </div>
-
-        <div class="col form-group">
-            <div class="input-group ">
-                <div class="input-group-prepend">
-                    <label for="destination" class="input-group-text">Destination</label>
-                </div>
-                <input class="form-control" type="text"  id="destination" name="destination" formControlName="destination">
+                <select formControlName="destination" class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedD">
+                    <option selected>Choose...</option>
+                    <option [value]="d.id" *ngFor="let d of destination">{{ d.name }}</option>
+                </select>
             </div>
         </div>
 
@@ -47,7 +45,7 @@
 
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="!searchForm.valid">Sarch For Tickets</button>
+    <button type="submit" class="mb-3 btn btn-primary" [disabled]="!searchForm.valid">Sarch For Tickets</button>
 
     
 </form>

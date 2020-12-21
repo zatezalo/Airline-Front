@@ -12,6 +12,7 @@ import { NavigationComponent } from './components/includes/navigation/navigation
 import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
 import { AllTicketsComponent } from './components/all-tickets/all-tickets.component';
 import { SearchTicketsComponent } from './components/search-tickets/search-tickets.component';
+import { EditTicketComponent } from './components/edit-ticket/edit-ticket.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchTicketsComponent } from './components/search-tickets/search-ticke
     NavigationComponent,
     AddTicketComponent,
     AllTicketsComponent,
-    SearchTicketsComponent
+    SearchTicketsComponent,
+    EditTicketComponent
   ],
   imports: [
     BrowserModule,

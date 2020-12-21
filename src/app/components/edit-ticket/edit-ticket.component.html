@@ -1,6 +1,6 @@
- <div class="col mt-3">
-    <h2 class="mb-3">Add Ticket</h2>
-    <form class="" [formGroup]="addTicketForm" (ngSubmit)="submitForm(addTicketForm.value)">
+<div class="col mt-3">
+    <h2 class="mb-3">Edit Ticket</h2>
+    <form class="" [formGroup]="editTicketForm" (ngSubmit)="submitForm(editTicketForm.value)">
         <div class="form-group">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -10,9 +10,10 @@
                     <option selected>Choose...</option>
                     <option [value]="flight.id" *ngFor="let flight of flights">{{ flight.origin.name }} - {{ flight.destination.name }}</option>
                 </select>
+                <input class="" disabled [value]="ticket.flight.origin.name + '-' + ticket.flight.destination.name" type="text"  name="flightV" >
             </div>
 
-            <div class="text-danger" *ngIf="flight.errors?.required">Flight is required! </div>
+            <!-- <div class="text-danger" *ngIf="flight.errors?.required">Flight is required! </div> -->
         </div>
 
         <div class="form-group">
@@ -24,6 +25,7 @@
                     <option selected>Choose...</option>
                     <option [value]="company.id" *ngFor="let company of companies">{{ company.name }}</option>
                 </select>
+                <input class=""  [value]="ticket.company.name" disabled type="text" name="fromDateV" >
             </div>
         </div>
 
@@ -33,6 +35,7 @@
                     <label for="date" class="input-group-text">From Date</label>
                 </div>
                 <input class="custom-select" type="date"  id="date" name="fromDate" formControlName="depart">
+                <input class="" [value]="depart" disabled type="text" name="fromDateV" >
             </div>
         </div>
 
@@ -42,6 +45,7 @@
                     <label for="date" class="input-group-text">To Date</label>
                 </div>
                 <input class="custom-select" type="date"  id="date" name="toDate" formControlName="comeBack">
+                <input class="" [value]="comeBack" disabled type="text" name="fromDateV" >
             </div>
         </div>
 
@@ -51,7 +55,7 @@
                     <div class="input-group-prepend">
                         <label for="availableCount" class="input-group-text">Available Tickets</label>
                     </div>
-                    <input class="form-control" type="number" min="0"  id="availableCount" name="availableCount" formControlName="availableCount">
+                    <input [(ngModel)]="ticket.availableCount" class="form-control" type="number" min="0"  id="availableCount" name="availableCount" formControlName="availableCount">
                 </div>
             </div>
 
@@ -60,12 +64,18 @@
                     <div class="input-group-prepend">
                         <label for="oneWay" class="input-group-text">One Way</label>
                     </div>
-                    <input class="form-control" type="checkbox"  id="oneWay" name="oneWay" formControlName="oneWay">
+                    <input [(ngModel)]="ticket.oneWay" class="form-control" type="checkbox"  id="oneWay" name="oneWay" formControlName="oneWay">
                 </div>
             </div>
         </div>
-
-        <button type="submit" class="btn btn-primary" [disabled]="!addTicketForm.valid">Make Ticket</button>
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-success" href="/home">Back To Tickets</a>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary float-right">Edit Ticket</button>
+            </div>
+        </div>
         
     </form>
 </div>

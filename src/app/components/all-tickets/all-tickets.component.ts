@@ -27,4 +27,9 @@ export class AllTicketsComponent implements OnInit {
     })
   }
 
+  deleteTicket(id) {
+    console.log(id)
+    this.ticketService.deleteTicket(id);
+  }
+
 }
