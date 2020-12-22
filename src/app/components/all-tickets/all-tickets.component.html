@@ -24,8 +24,13 @@
                 <td>{{ ticket.oneWay }}</td>
                 <td>{{ ticket.availableCount }}</td>
                 <td class="">
-                    <input *ngIf="user.userType === 'USER'" type="number" min = "0" max="{{ ticket.availableCount }}" class="mr-2" style="width: 50px;">
-                    <a *ngIf="user.userType === 'USER'" class="btn btn-success text-light "><i class="fas fa-plus"></i></a>
+                    {{ticket.id}}
+                    <form [formGroup]="bookingForm" (ngSubmit)="submitForm(bookingForm.value)">
+                        <input  formControlName="numberOfTickets" *ngIf="user.userType === 'USER'" type="number" min = "1" max="{{ ticket.availableCount }}" class="mr-2" style="width: 50px;">
+                        <input formControlName="username" type="hidden" [(ngModel)]="user.username">
+                        <input formControlName="ticketId" name="ticketId" type="hidden" value='{{ticket.id}}'>
+                        <button *ngIf="user.userType === 'USER'" type="submit" [disabled]="!bookingForm.valid" class="btn btn-success text-light "><i class="fas fa-plus"></i></button>
+                    </form>
                     <a *ngIf="user.userType === 'ADMIN'" href="ticket/{{ticket.id}}" class="btn btn-success text-light mr-2 "><i class="fas fa-edit "></i></a>
                     <a *ngIf="user.userType === 'ADMIN'" (click)="deleteTicket(ticket.id)" class="btn btn-danger text-light "><i class="far fa-trash-alt"></i></a>
                 </td>

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { City } from 'src/app/model/city.model';
 import { CityService } from 'src/app/services/city/city.service';
+import { TicketService } from 'src/app/services/ticket/ticket.service';
 
 @Component({
   selector: 'app-search-tickets',
@@ -17,7 +18,7 @@ export class SearchTicketsComponent implements OnInit {
   destination: City[] = [];
   selectedD: number = 1;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private cityService: CityService) { 
+  constructor(private router: Router, private formBuilder: FormBuilder, private cityService: CityService, private ticketService: TicketService) { 
     this.searchForm = this.formBuilder.group({
       origin: [''],
       destination: [''],
@@ -36,10 +37,7 @@ export class SearchTicketsComponent implements OnInit {
 
   public submitForm(credentials) {
     console.log(credentials);
-    /*this.ticketService.addTicket(credentials).subscribe(data => {
-      console.log(data);
-      //this.router.navigate(['/']);
-    })*/
+    //this.ticketService.setSearch(credentials);
   }
 
 }
