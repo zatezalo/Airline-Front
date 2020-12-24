@@ -13,6 +13,7 @@ import { AddTicketComponent } from './components/add-ticket/add-ticket.component
 import { AllTicketsComponent } from './components/all-tickets/all-tickets.component';
 import { SearchTicketsComponent } from './components/search-tickets/search-tickets.component';
 import { EditTicketComponent } from './components/edit-ticket/edit-ticket.component';
+import { CompanyComponent } from './components/company/company.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditTicketComponent } from './components/edit-ticket/edit-ticket.compon
     AddTicketComponent,
     AllTicketsComponent,
     SearchTicketsComponent,
-    EditTicketComponent
+    EditTicketComponent,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,

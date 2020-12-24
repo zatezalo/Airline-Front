@@ -59,6 +59,11 @@ export class TicketService {
     return this.http.get<Ticket[]>(this.baseUrl + 'getAllTickets', httpOptions);
   }
 
+  getTicketsByParams(): Observable<Ticket[]> {
+    //return return this.http.get<Ticket[]>(this.baseUrl + 'getTicketsParams', httpOptions);
+    return null;
+  }
+
   deleteTicket(id) {
     let url = `http://localhost:8080/api/ticket/${id}`;
     //console.log(url)

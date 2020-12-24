@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Company } from 'src/app/model/company.model';
+import { CompanyWithTickets } from 'src/app/model/companyWithTickets.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,6 +21,10 @@ export class CompanyService {
 
   getCompanies(): Observable<Company[]> {
     return this.http.get<Company[]>(this.baseUrl + 'getAllCompanies', httpOptions);
+  }
+  
+  getCompany(id): Observable<CompanyWithTickets> {
+    return this.http.get<CompanyWithTickets>(this.baseUrl + 'getCompany/' + id, httpOptions)
   }
 
 }
