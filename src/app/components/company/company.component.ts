@@ -18,13 +18,13 @@ export class CompanyComponent implements OnInit {
   public bookingForm: FormGroup;
 
   constructor(private router: Router, private companyService: CompanyService, private ticketService: TicketService,
-              private userService: UserService, private activatedRoute: ActivatedRoute, private formBuilder:FormBuilder) { 
-                this.bookingForm = this.formBuilder.group({
-                  numberOfTickets: ['', Validators.required],
-                  username: [''],
-                  ticketId: ['']
-                })
-              }
+    private userService: UserService, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder) {
+    this.bookingForm = this.formBuilder.group({
+      numberOfTickets: ['', Validators.required],
+      username: [''],
+      ticketId: ['']
+    })
+  }
 
   ngOnInit(): void {
 
@@ -41,7 +41,7 @@ export class CompanyComponent implements OnInit {
         this.company = company;
       })
     })
-   
+
   }
 
   deleteTicket(id) {

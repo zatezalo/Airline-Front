@@ -67,17 +67,17 @@ export class TicketService {
   deleteTicket(id) {
     let url = `http://localhost:8080/api/ticket/${id}`;
     //console.log(url)
-    return this.http.delete(`http://localhost:8080/api/ticket/${id}` , httpOptions)
-    .subscribe((returnObject: string) => {
-      //console.log(returnObject)
-      location.reload();
-    }, (error: HttpErrorResponse) => {
-      //console.log(error);
-      location.reload();
-    });
+    return this.http.delete(`http://localhost:8080/api/ticket/${id}`, httpOptions)
+      .subscribe((returnObject: string) => {
+        //console.log(returnObject)
+        location.reload();
+      }, (error: HttpErrorResponse) => {
+        //console.log(error);
+        location.reload();
+      });
   }
 
-  getTicket(id):Observable<Ticket> {
-    return this.http.get<Ticket>(`http://localhost:8080/api/ticket/getTicket/${id}` , httpOptions);
+  getTicket(id): Observable<Ticket> {
+    return this.http.get<Ticket>(`http://localhost:8080/api/ticket/getTicket/${id}`, httpOptions);
   }
 }

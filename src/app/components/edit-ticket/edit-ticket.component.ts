@@ -15,7 +15,7 @@ import { TicketService } from 'src/app/services/ticket/ticket.service';
 })
 export class EditTicketComponent implements OnInit {
 
-  ticket:Ticket;
+  ticket: Ticket;
   public editTicketForm: FormGroup;
 
   flights: Flight[] = [];
@@ -27,7 +27,7 @@ export class EditTicketComponent implements OnInit {
   comeBack: string;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private ticketService: TicketService,
-    private flightService: FlightService, private companyService: CompanyService) { 
+    private flightService: FlightService, private companyService: CompanyService) {
     this.editTicketForm = this.formBuilder.group({
       flightId: ['', Validators.required],
       companyId: ['', Validators.required],
@@ -62,14 +62,14 @@ export class EditTicketComponent implements OnInit {
   }
 
   public submitForm(credentials) {
-    
-    if(credentials.companyId == 0)
+
+    if (credentials.companyId == 0)
       credentials.companyId = this.ticket.company.id;
-    if(credentials.flightId == 0)
+    if (credentials.flightId == 0)
       credentials.flightId = this.ticket.flight.id;
-    if(credentials.depart.toString() == "")
+    if (credentials.depart.toString() == "")
       credentials.depart = this.ticket.depart
-    if(credentials.comeBack.toString() == "")
+    if (credentials.comeBack.toString() == "")
       credentials.comeBack = this.ticket.comeBack;
     credentials.ticketId = this.ticket.id;
     console.log(credentials);

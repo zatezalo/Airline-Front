@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', [ Validators.required, Validators.minLength(6), Validators.pattern('.*[0-9].*') ] ],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('.*[0-9].*')]],
       userType: ['', Validators.required]
     })
   }

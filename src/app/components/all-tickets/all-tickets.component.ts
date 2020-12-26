@@ -22,20 +22,20 @@ export class AllTicketsComponent implements OnInit {
       numberOfTickets: ['', Validators.required],
       username: ['']
     })
-   }
+  }
 
   ngOnInit(): void {
-    
+
     this.userService.getUserByUsername(this.userService.getUsername()).subscribe(user => {
       this.user = user;
     })
 
     this.ticketService.getAllTickets().subscribe(tickets => {
       // if(this.user.userType === "ADMIN")
-        this.tickets = tickets;
-        //console.log(this.tickets);
+      this.tickets = tickets;
+      //console.log(this.tickets);
     })
-    
+
   }
 
   deleteTicket(id) {

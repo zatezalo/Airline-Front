@@ -22,7 +22,7 @@ export class CompanyService {
   getCompanies(): Observable<Company[]> {
     return this.http.get<Company[]>(this.baseUrl + 'getAllCompanies', httpOptions);
   }
-  
+
   getCompany(id): Observable<CompanyWithTickets> {
     return this.http.get<CompanyWithTickets>(this.baseUrl + 'getCompany/' + id, httpOptions)
   }

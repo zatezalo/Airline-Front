@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class HomeComponent implements OnInit {
   public user: User;
-  constructor(private userService: UserService) { 
+  constructor(private userService: UserService) {
     this.user = new User();
   }
 

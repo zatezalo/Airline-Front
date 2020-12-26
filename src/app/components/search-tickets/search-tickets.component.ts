@@ -18,7 +18,7 @@ export class SearchTicketsComponent implements OnInit {
   destination: City[] = [];
   selectedD: number = 1;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private cityService: CityService, private ticketService: TicketService) { 
+  constructor(private router: Router, private formBuilder: FormBuilder, private cityService: CityService, private ticketService: TicketService) {
     this.searchForm = this.formBuilder.group({
       origin: [''],
       destination: [''],

@@ -21,7 +21,7 @@ export class NavigationComponent implements OnInit {
     })
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem("jwt");
     this.router.navigate(['/']);
   }

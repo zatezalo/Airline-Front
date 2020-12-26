@@ -6,11 +6,14 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Flight</label>
                 </div>
-                <select formControlName="flightId" class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedF">
+                <select formControlName="flightId" class="custom-select" id="inputGroupSelect01"
+                    [(ngModel)]="selectedF">
                     <option selected>Choose...</option>
-                    <option [value]="flight.id" *ngFor="let flight of flights">{{ flight.origin.name }} - {{ flight.destination.name }}</option>
+                    <option [value]="flight.id" *ngFor="let flight of flights">{{ flight.origin.name }} - {{
+                        flight.destination.name }}</option>
                 </select>
-                <input class="" disabled [value]="ticket.flight.origin.name + '-' + ticket.flight.destination.name" type="text"  name="flightV" >
+                <input class="" disabled [value]="ticket.flight.origin.name + '-' + ticket.flight.destination.name"
+                    type="text" name="flightV">
             </div>
 
             <!-- <div class="text-danger" *ngIf="flight.errors?.required">Flight is required! </div> -->
@@ -21,11 +24,12 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Company</label>
                 </div>
-                <select formControlName="companyId" class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedC">
+                <select formControlName="companyId" class="custom-select" id="inputGroupSelect01"
+                    [(ngModel)]="selectedC">
                     <option selected>Choose...</option>
                     <option [value]="company.id" *ngFor="let company of companies">{{ company.name }}</option>
                 </select>
-                <input class=""  [value]="ticket.company.name" disabled type="text" name="fromDateV" >
+                <input class="" [value]="ticket.company.name" disabled type="text" name="fromDateV">
             </div>
         </div>
 
@@ -34,8 +38,8 @@
                 <div class="input-group-prepend">
                     <label for="date" class="input-group-text">From Date</label>
                 </div>
-                <input class="custom-select" type="date"  id="date" name="fromDate" formControlName="depart">
-                <input class="" [value]="depart" disabled type="text" name="fromDateV" >
+                <input class="custom-select" type="date" id="date" name="fromDate" formControlName="depart">
+                <input class="" [value]="depart" disabled type="text" name="fromDateV">
             </div>
         </div>
 
@@ -44,8 +48,8 @@
                 <div class="input-group-prepend">
                     <label for="date" class="input-group-text">To Date</label>
                 </div>
-                <input class="custom-select" type="date"  id="date" name="toDate" formControlName="comeBack">
-                <input class="" [value]="comeBack" disabled type="text" name="fromDateV" >
+                <input class="custom-select" type="date" id="date" name="toDate" formControlName="comeBack">
+                <input class="" [value]="comeBack" disabled type="text" name="fromDateV">
             </div>
         </div>
 
@@ -55,7 +59,8 @@
                     <div class="input-group-prepend">
                         <label for="availableCount" class="input-group-text">Available Tickets</label>
                     </div>
-                    <input [(ngModel)]="ticket.availableCount" class="form-control" type="number" min="0"  id="availableCount" name="availableCount" formControlName="availableCount">
+                    <input [(ngModel)]="ticket.availableCount" class="form-control" type="number" min="0"
+                        id="availableCount" name="availableCount" formControlName="availableCount">
                 </div>
             </div>
 
@@ -64,7 +69,8 @@
                     <div class="input-group-prepend">
                         <label for="oneWay" class="input-group-text">One Way</label>
                     </div>
-                    <input [(ngModel)]="ticket.oneWay" class="form-control" type="checkbox"  id="oneWay" name="oneWay" formControlName="oneWay">
+                    <input [(ngModel)]="ticket.oneWay" class="form-control" type="checkbox" id="oneWay" name="oneWay"
+                        formControlName="oneWay">
                 </div>
             </div>
         </div>
@@ -76,6 +82,6 @@
                 <button type="submit" class="btn btn-primary float-right">Edit Ticket</button>
             </div>
         </div>
-        
+
     </form>
 </div>

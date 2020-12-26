@@ -7,16 +7,16 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
-   // http://localhost:4200/
-   { path: '', component: LoginComponent},
-   // http://localhost:4200/register
-   { path: 'register', component: RegisterComponent},
-   // http://localhost:4200/home
-   { path: 'home', component: HomeComponent},
-   // http://localhost:4200/ticket
-   { path: 'ticket/:id', component: EditTicketComponent},
-   // http://localhost:4200/company
-   { path: 'company/:id', component: CompanyComponent}
+  // http://localhost:4200/
+  { path: '', component: LoginComponent },
+  // http://localhost:4200/register
+  { path: 'register', component: RegisterComponent },
+  // http://localhost:4200/home
+  { path: 'home', component: HomeComponent },
+  // http://localhost:4200/ticket
+  { path: 'ticket/:id', component: EditTicketComponent },
+  // http://localhost:4200/company
+  { path: 'company/:id', component: CompanyComponent }
 ];
 
 @NgModule({

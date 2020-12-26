@@ -21,11 +21,11 @@ export class AuthService {
     return this.http.post(this.baseUrl + 'login', {
       username: credentials.username,
       password: credentials.password
-    }).pipe(map( (responseData: Credentials) => {
-        //console.log(responseData.jwt);
-        //console.log(credentials.username);
-        localStorage.setItem("username", credentials.username);
-        localStorage.setItem("jwt", responseData.jwt);
+    }).pipe(map((responseData: Credentials) => {
+      //console.log(responseData.jwt);
+      //console.log(credentials.username);
+      localStorage.setItem("username", credentials.username);
+      localStorage.setItem("jwt", responseData.jwt);
     }))
   }
 
@@ -42,7 +42,7 @@ export class AuthService {
     }, httpOptions)
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem("jwt")
   }
 }
