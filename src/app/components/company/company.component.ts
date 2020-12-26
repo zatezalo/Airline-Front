@@ -16,13 +16,20 @@ export class CompanyComponent implements OnInit {
   company: CompanyWithTickets;
   user: User;
   public bookingForm: FormGroup;
+  public companyForm: FormGroup;
+  public companyEditForm: FormGroup;
 
   constructor(private router: Router, private companyService: CompanyService, private ticketService: TicketService,
     private userService: UserService, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder) {
     this.bookingForm = this.formBuilder.group({
       numberOfTickets: ['', Validators.required],
-      username: [''],
-      ticketId: ['']
+      username: ['']
+    })
+    this.companyForm = this.formBuilder.group({
+      name: ['', Validators.required]
+    })
+    this.companyEditForm = this.formBuilder.group({
+      name: ['', Validators.required]
     })
   }
 
@@ -49,13 +56,37 @@ export class CompanyComponent implements OnInit {
     this.ticketService.deleteTicket(id);
   }
 
+  deleteCompany(id) {
+    console.log(id);
+    this.companyService.deleteCompany(id);
+  }
+
   public submitForm(credentials, id) {
-    console.log(credentials, id);
+    //console.log(credentials, id);
     this.ticketService.addBookings(credentials, id).subscribe(data => {
       console.log(data);
       //this.router.navigate(['/bookings']);
-      //location.reload();
     });
+  }
+
+  public submitAddCompany(credentials) {
+    console.log(credentials);
+    this.companyService.addCompany(credentials).subscribe(data => {
+      console.log(data);
+    });
+    location.reload();
+  }
+
+  public submitEditCompany(credentials) {
+    console.log(credentials);
+    this.activatedRoute.paramMap.subscribe(params => {
+      const id = Number(params.get('id'))
+      console.log(id)
+      this.companyService.editCompany(credentials, id).subscribe(data => {
+        console.log(data);
+      });
+    })
+    //location.reload();
   }
 
 }

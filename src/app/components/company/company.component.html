@@ -1,13 +1,47 @@
 <app-navigation></app-navigation>
+<!-- <div class="row"> -->
+<h1 class="text-center">{{company.name}}</h1>
 
-<h1>{{company.name}}</h1>
-<div class="table-responsive-md">
+<div *ngIf="user.userType === 'ADMIN'" class="container">
+    <div class="row">
+        <form class=" col" [formGroup]="companyForm" (ngSubmit)="submitAddCompany(companyForm.value)">
+            <h3>Add company</h3>
+            <div class="form-group">
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                        <label for="name" class="input-group-text">Company Name</label>
+                    </div>
+                    <input class="form-control" type="text" id="name" name="name" formControlName="name">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="!companyForm.valid">Make New Company</button>
+        </form>
+
+        <form class="col" [formGroup]="companyEditForm" (ngSubmit)="submitEditCompany(companyEditForm.value)">
+            <h3>Edit company</h3>
+            <div class="form-group">
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                        <label for="name" class="input-group-text">Company Name</label>
+                    </div>
+                    <input class="form-control" [(ngModel)]='company.name' type="text" id="name" name="name"
+                        formControlName="name">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!companyEditForm.valid">Save Company Name</button>
+        </form>
+    </div>
+</div>
+
+<a *ngIf="user.userType === 'ADMIN'" (click)="deleteCompany(company.id)"
+    class="btn btn-danger text-light mr-2 float-right"><i class="far fa-trash-alt fa-lg"> Delete</i></a>
+
+<div class="table-responsive-md mt-5">
 
     <table class="table">
-        <!-- <caption>List of users</caption> -->
         <thead>
             <tr>
-                <!-- <th scope="col">Company</th> -->
                 <th scope="col">Origin</th>
                 <th scope="col">Destination</th>
                 <th scope="col">Depart</th>
@@ -19,7 +53,6 @@
         </thead>
         <tbody>
             <tr *ngFor="let ticket of company.tickets">
-                <!-- <td>{{ ticket.company.name }}</td> -->
                 <td>{{ ticket.flight.origin.name }}</td>
                 <td>{{ ticket.flight.destination.name }}</td>
                 <td>{{ ticket.depart | date:'d/MMMM/y' }}</td>
