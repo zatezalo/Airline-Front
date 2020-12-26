@@ -46,10 +46,10 @@ export class TicketService {
     }, httpOptions)
   }
 
-  addBookings(credentials) {
+  addBookings(credentials, id) {
     console.log(credentials);
     return this.http.post(this.baseUrl + 'addBooking', {
-      ticketId: credentials.ticketId,
+      ticketId: id,
       username: credentials.username,
       numberOfTickets: credentials.numberOfTickets
     }, httpOptions)

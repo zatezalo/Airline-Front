@@ -49,13 +49,13 @@ export class CompanyComponent implements OnInit {
     this.ticketService.deleteTicket(id);
   }
 
-  public submitForm(credentials) {
-    console.log(credentials);
-    /*this.ticketService.addBookings(credentials).subscribe(data => {
+  public submitForm(credentials, id) {
+    console.log(credentials, id);
+    this.ticketService.addBookings(credentials, id).subscribe(data => {
       console.log(data);
       //this.router.navigate(['/bookings']);
       //location.reload();
-    });*/
+    });
   }
 
 }
