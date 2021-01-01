@@ -1,8 +1,12 @@
+import { Flight } from "./flight.model"
+import { Ticket } from "./ticket.model"
+import { User } from "./user.model"
+
 export class Booking {
     id: number
-    company: string
     isAvailable: boolean
-    flight: number
-    user: number
-    ticket: number
+    flight: Flight
+    user: User
+    ticket: Ticket
+    bookingCount: number
 }

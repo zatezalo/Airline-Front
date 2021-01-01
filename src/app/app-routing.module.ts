@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BookingsComponent } from './components/bookings/bookings.component';
 import { CompanyComponent } from './components/company/company.component';
 import { EditTicketComponent } from './components/edit-ticket/edit-ticket.component';
 import { HomeComponent } from './components/home/home.component';
@@ -16,7 +17,9 @@ const routes: Routes = [
   // http://localhost:4200/ticket
   { path: 'ticket/:id', component: EditTicketComponent },
   // http://localhost:4200/company
-  { path: 'company/:id', component: CompanyComponent }
+  { path: 'company/:id', component: CompanyComponent },
+  // http://localhost:4200/username
+  { path: 'profile/:username', component: BookingsComponent }
 ];
 
 @NgModule({

@@ -14,6 +14,7 @@ import { AllTicketsComponent } from './components/all-tickets/all-tickets.compon
 import { SearchTicketsComponent } from './components/search-tickets/search-tickets.component';
 import { EditTicketComponent } from './components/edit-ticket/edit-ticket.component';
 import { CompanyComponent } from './components/company/company.component';
+import { BookingsComponent } from './components/bookings/bookings.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CompanyComponent } from './components/company/company.component';
     AllTicketsComponent,
     SearchTicketsComponent,
     EditTicketComponent,
-    CompanyComponent
+    CompanyComponent,
+    BookingsComponent
   ],
   imports: [
     BrowserModule,
