@@ -16,6 +16,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary" [disabled]="!companyForm.valid">Make New Company</button>
+            <div *ngIf="errorMsgAdd.length > 0" class="mt-2 text-danger alert alert-danger">{{errorMsgAdd}}</div>
         </form>
 
         <form class="col" [formGroup]="companyEditForm" (ngSubmit)="submitEditCompany(companyEditForm.value)">
@@ -30,11 +31,12 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="!companyEditForm.valid">Save Company Name</button>
+            <div *ngIf="errorMsgEdit.length > 0" class="mt-2 text-danger alert alert-danger">{{errorMsgEdit}}</div>
         </form>
     </div>
 </div>
 
-<a *ngIf="user.userType === 'ADMIN'" (click)="deleteCompany(company.id)"
+<a *ngIf="user.userType === 'ADMIN'" (click)="deleteCompany()"
     class="btn btn-danger text-light mr-2 float-right"><i class="far fa-trash-alt fa-lg"> Delete</i></a>
 
 <div class="table-responsive-md mt-5">

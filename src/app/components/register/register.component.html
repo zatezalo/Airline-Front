@@ -28,6 +28,6 @@
         </div> 
 
         <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Make user</button>
-
+        <div *ngIf="errorMsg.length > 0" class="mt-2 text-danger alert alert-danger">{{errorMsg}}</div>
     </form>
 </div>

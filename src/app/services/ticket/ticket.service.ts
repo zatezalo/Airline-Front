@@ -22,7 +22,7 @@ export class TicketService {
   constructor(private http: HttpClient) { }
 
   addTicket(credentials) {
-    console.log(credentials);
+    //console.log(credentials);
     return this.http.post(this.baseUrl + 'addTicket', {
       companyId: credentials.companyId,
       flightId: credentials.flightId,
@@ -59,21 +59,26 @@ export class TicketService {
     return this.http.get<Ticket[]>(this.baseUrl + 'getAllTickets', httpOptions);
   }
 
-  getTicketsByParams(): Observable<Ticket[]> {
-    //return return this.http.get<Ticket[]>(this.baseUrl + 'getTicketsParams', httpOptions);
-    return null;
+  getTicketsByParams(credentials) {
+    console.log(credentials)
+    return this.http.post(this.baseUrl + 'searchTickets', {
+      destination: credentials.destination,
+      origin: credentials.origin,
+      comeBack: credentials.comeBack,
+      depart: credentials.depart
+    } , httpOptions);
   }
 
   deleteTicket(id) {
     let url = `http://localhost:8080/api/ticket/${id}`;
     //console.log(url)
-    return this.http.delete(`http://localhost:8080/api/ticket/${id}`, httpOptions)
-      .subscribe((returnObject: string) => {
+    return this.http.delete(`http://localhost:8080/api/ticket/${id}`, httpOptions).subscribe(
+      (returnObject: string) => {
         //console.log(returnObject)
-        location.reload();
+        //location.reload();
       }, (error: HttpErrorResponse) => {
         //console.log(error);
-        location.reload();
+        //location.reload();
       });
   }
 

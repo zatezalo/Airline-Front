@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,7 +19,8 @@ export class CompanyComponent implements OnInit {
   public bookingForm: FormGroup;
   public companyForm: FormGroup;
   public companyEditForm: FormGroup;
-
+  public errorMsgEdit: string = "";
+  public errorMsgAdd: string = "";
   constructor(private router: Router, private companyService: CompanyService, private ticketService: TicketService,
     private userService: UserService, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder) {
     this.bookingForm = this.formBuilder.group({
@@ -56,9 +58,14 @@ export class CompanyComponent implements OnInit {
     this.ticketService.deleteTicket(id);
   }
 
-  deleteCompany(id) {
-    console.log(id);
-    this.companyService.deleteCompany(id);
+  deleteCompany() {
+    this.activatedRoute.paramMap.subscribe(params => {
+
+      const id = Number(params.get('id'))
+      console.log(id)
+     
+      this.companyService.deleteCompany(id);
+    })
   }
 
   public submitForm(credentials, id) {
@@ -71,10 +78,18 @@ export class CompanyComponent implements OnInit {
 
   public submitAddCompany(credentials) {
     console.log(credentials);
-    this.companyService.addCompany(credentials).subscribe(data => {
-      console.log(data);
-    });
-    location.reload();
+    this.companyService.addCompany(credentials).subscribe((returnObject: string) => {
+      console.log('radi ovde');
+      console.log(returnObject);
+      location.reload();
+    },
+    (error: HttpErrorResponse) => {
+      console.log(error.error.massage);
+      this.errorMsgAdd = error.error.massage;
+      //alert(error.error.massage);
+    }
+  );
+    //location.reload();
   }
 
   public submitEditCompany(credentials) {
@@ -82,9 +97,13 @@ export class CompanyComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       const id = Number(params.get('id'))
       console.log(id)
-      this.companyService.editCompany(credentials, id).subscribe(data => {
-        console.log(data);
-      });
+      this.companyService.editCompany(credentials, id).subscribe((returnObject: string) => {
+        console.log(returnObject);
+      },
+      (error: HttpErrorResponse) => {
+        //console.log(error.error.massage);
+        this.errorMsgEdit = error.error.massage;
+      })
     })
     //location.reload();
   }

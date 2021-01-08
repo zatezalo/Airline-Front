@@ -39,17 +39,16 @@ export class AllTicketsComponent implements OnInit {
   }
 
   deleteTicket(id) {
-    console.log(id)
     this.ticketService.deleteTicket(id);
   }
 
   public submitForm(credentials, id) {
-    console.log(credentials, id);
+    //console.log(credentials, id);
     this.ticketService.addBookings(credentials, id).subscribe(data => {
       console.log(data);
-      //this.router.navigate(['/bookings']);
       //location.reload();
     });
+    this.router.navigate(['/profile/' + this.userService.getUsername()]);
   }
 
 }

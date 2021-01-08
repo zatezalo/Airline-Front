@@ -1,52 +1,85 @@
-<form class="" [formGroup]="searchForm" (ngSubmit)="submitForm(searchForm.value)">
-
-    <div class="row">
-        <div class="col form-group">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Origin</label>
-                </div>
-                <select formControlName="origin" class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedO">
-                    <option selected>Choose...</option>
-                    <option [value]="o.id" *ngFor="let o of origin">{{ o.name }}</option>
-                </select>
-            </div>
+<form
+  class=""
+  [formGroup]="searchForm"
+  (ngSubmit)="submitForm(searchForm.value)"
+>
+  <div class="row">
+    <div class="col form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01"
+            >Origin</label
+          >
         </div>
-
-        <div class="col form-group">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Destination</label>
-                </div>
-                <select formControlName="destination" class="custom-select" id="inputGroupSelect01"
-                    [(ngModel)]="selectedD">
-                    <option selected>Choose...</option>
-                    <option [value]="d.id" *ngFor="let d of destination">{{ d.name }}</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="col form-group">
-            <div class="input-group ">
-                <div class="input-group-prepend">
-                    <label for="date" class="input-group-text">From Date</label>
-                </div>
-                <input class="custom-select" type="date" id="date" name="fromDate" formControlName="depart">
-            </div>
-        </div>
-
-        <div class="col form-group">
-            <div class="input-group ">
-                <div class="input-group-prepend">
-                    <label for="date" class="input-group-text">To Date</label>
-                </div>
-                <input class="custom-select" type="date" id="date" name="toDate" formControlName="comeBack">
-            </div>
-        </div>
-
+        <select
+          formControlName="origin"
+          class="custom-select"
+          id="inputGroupSelect01"
+          [(ngModel)]="selectedO"
+        >
+          <option selected>Choose...</option>
+          <option [value]="o.id" *ngFor="let o of origin">{{ o.name }}</option>
+        </select>
+      </div>
     </div>
 
-    <button type="submit" class="mb-3 btn btn-primary" [disabled]="!searchForm.valid">Sarch For Tickets</button>
+    <div class="col form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01"
+            >Destination</label
+          >
+        </div>
+        <select
+          formControlName="destination"
+          class="custom-select"
+          id="inputGroupSelect01"
+          [(ngModel)]="selectedD"
+        >
+          <option selected>Choose...</option>
+          <option [value]="d.id" *ngFor="let d of destination">
+            {{ d.name }}
+          </option>
+        </select>
+      </div>
+    </div>
 
+    <div class="col form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label for="date" class="input-group-text">From Date</label>
+        </div>
+        <input
+          class="custom-select"
+          type="date"
+          id="date"
+          name="fromDate"
+          formControlName="depart"
+        />
+      </div>
+    </div>
 
+    <div class="col form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label for="date" class="input-group-text">To Date</label>
+        </div>
+        <input
+          class="custom-select"
+          type="date"
+          id="date"
+          name="toDate"
+          formControlName="comeBack"
+        />
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="mb-3 btn btn-primary"
+    [disabled]="!searchForm.valid"
+  >
+    Sarch For Tickets
+  </button>
 </form>

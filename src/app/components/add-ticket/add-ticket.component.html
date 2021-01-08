@@ -1,75 +1,128 @@
 <div class="col mt-3">
-    <h2 class="mb-3">Add Ticket</h2>
-    <form class="" [formGroup]="addTicketForm" (ngSubmit)="submitForm(addTicketForm.value)">
-        <div class="form-group">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Flight</label>
-                </div>
-                <select formControlName="flightId" class="custom-select" id="inputGroupSelect01"
-                    [(ngModel)]="selectedF">
-                    <option selected>Choose...</option>
-                    <option [value]="flight.id" *ngFor="let flight of flights">{{ flight.origin.name }} - {{
-                        flight.destination.name }}</option>
-                </select>
-            </div>
-
-            <div class="text-danger" *ngIf="flight.errors?.required">Flight is required! </div>
+  <h2 class="mb-3">Add Ticket</h2>
+  <form
+    class=""
+    [formGroup]="addTicketForm"
+    (ngSubmit)="submitForm(addTicketForm.value)"
+  >
+    <div class="form-group">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01"
+            >Flight</label
+          >
         </div>
+        <select
+          formControlName="flightId"
+          class="custom-select"
+          id="inputGroupSelect01"
+          [(ngModel)]="selectedF"
+        >
+          <option selected>Choose...</option>
+          <option [value]="flight.id" *ngFor="let flight of flights">
+            {{ flight.origin.name }} - {{ flight.destination.name }}
+          </option>
+        </select>
+      </div>
 
-        <div class="form-group">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Company</label>
-                </div>
-                <select formControlName="companyId" class="custom-select" id="inputGroupSelect01"
-                    [(ngModel)]="selectedC">
-                    <option selected>Choose...</option>
-                    <option [value]="company.id" *ngFor="let company of companies">{{ company.name }}</option>
-                </select>
-            </div>
+      <div class="text-danger" *ngIf="flight.errors?.required">
+        Flight is required!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">
+            Company</label
+          >
         </div>
+        <select
+          formControlName="companyId"
+          class="custom-select"
+          id="inputGroupSelect01"
+          [(ngModel)]="selectedC"
+        >
+          <option selected>Choose...</option>
+          <option [value]="company.id" *ngFor="let company of companies">
+            {{ company.name }}
+          </option>
+        </select>
+      </div>
+    </div>
 
-        <div class=" form-group">
-            <div class="input-group ">
-                <div class="input-group-prepend">
-                    <label for="date" class="input-group-text">From Date</label>
-                </div>
-                <input class="custom-select" type="date" id="date" name="fromDate" formControlName="depart">
-            </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label for="date" class="input-group-text">From Date</label>
         </div>
+        <input
+          class="custom-select"
+          type="date"
+          id="date"
+          name="fromDate"
+          formControlName="depart"
+        />
+      </div>
+    </div>
 
-        <div class="form-group">
-            <div class="input-group ">
-                <div class="input-group-prepend">
-                    <label for="date" class="input-group-text">To Date</label>
-                </div>
-                <input class="custom-select" type="date" id="date" name="toDate" formControlName="comeBack">
-            </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label for="date" class="input-group-text">To Date</label>
         </div>
+        <input
+          class="custom-select"
+          type="date"
+          id="date"
+          name="toDate"
+          formControlName="comeBack"
+        />
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="col form-group">
-                <div class="input-group ">
-                    <div class="input-group-prepend">
-                        <label for="availableCount" class="input-group-text">Available Tickets</label>
-                    </div>
-                    <input class="form-control" type="number" min="0" id="availableCount" name="availableCount"
-                        formControlName="availableCount">
-                </div>
-            </div>
-
-            <div class="col form-group">
-                <div class="input-group ">
-                    <div class="input-group-prepend">
-                        <label for="oneWay" class="input-group-text">One Way</label>
-                    </div>
-                    <input class="form-control" type="checkbox" id="oneWay" name="oneWay" formControlName="oneWay">
-                </div>
-            </div>
+    <div class="row">
+      <div class="col form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label for="availableCount" class="input-group-text"
+              >Available Tickets</label
+            >
+          </div>
+          <input
+            class="form-control"
+            type="number"
+            min="0"
+            id="availableCount"
+            name="availableCount"
+            formControlName="availableCount"
+          />
         </div>
+      </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="!addTicketForm.valid">Make Ticket</button>
+      <div class="col form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label for="oneWay" class="input-group-text">One Way</label>
+          </div>
+          <input
+            class="form-control"
+            type="checkbox"
+            id="oneWay"
+            name="oneWay"
+            formControlName="oneWay"
+          />
+        </div>
+      </div>
+    </div>
 
-    </form>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!addTicketForm.valid"
+    >
+      Make Ticket
+    </button>
+    <div *ngIf="errorMsg.length > 0" class="mt-2 text-danger alert alert-danger">{{errorMsg}}</div>
+  </form>
 </div>

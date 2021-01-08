@@ -23,16 +23,15 @@ export class BookingsComponent implements OnInit {
       this.user = user;
     })
   }
-
+  //Treba dodati da bi radilo 
   addBooking(id) {
-    console.log(id)
     this.bookingService.addBooking(id);
-    console.log("proslo")
+    location.reload();
   }
 
   deleteBooking(id) {
-    //console.log(id)
     this.bookingService.deleteBooking(id);
+    location.reload();
   }
 
 }

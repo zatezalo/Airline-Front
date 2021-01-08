@@ -28,7 +28,6 @@ export class SearchTicketsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.cityService.getAllCities().subscribe(cities => {
       this.origin = cities;
       this.destination = cities;
@@ -36,8 +35,8 @@ export class SearchTicketsComponent implements OnInit {
   }
 
   public submitForm(credentials) {
-    console.log(credentials);
-    //this.ticketService.setSearch(credentials);
+    //console.log(credentials);
+    this.ticketService.getTicketsByParams(credentials);
   }
 
 }
