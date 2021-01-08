@@ -40,6 +40,7 @@ export class AllTicketsComponent implements OnInit {
 
   deleteTicket(id) {
     this.ticketService.deleteTicket(id);
+    location.reload();
   }
 
   public submitForm(credentials, id) {

@@ -20,7 +20,6 @@
                     <label class="input-group-text" for="inputGroupSelect01">User Type</label>
                 </div>
                 <select formControlName="userType" class="custom-select" id="inputGroupSelect01" [(ngModel)]="selected">
-                    <option selected>Choose...</option>
                     <option [value]="item.val" *ngFor="let item of items">{{ item.name }}</option>
                 </select>
                 </div>

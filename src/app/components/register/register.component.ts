@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     { val: 'ADMIN', name: 'Admin' },
     { val: 'USER', name: 'User' },
   ];
-  selected: number = 0;
+  selected: number = 1;
 
   constructor(
     private authService: AuthService,
