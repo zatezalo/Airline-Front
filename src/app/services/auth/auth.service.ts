@@ -22,8 +22,6 @@ export class AuthService {
       username: credentials.username,
       password: credentials.password
     }).pipe(map((responseData: Credentials) => {
-      //console.log(responseData.jwt);
-      //console.log(credentials.username);
       localStorage.setItem("username", credentials.username);
       localStorage.setItem("jwt", responseData.jwt);
     }))

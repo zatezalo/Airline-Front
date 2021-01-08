@@ -18,7 +18,6 @@ export class TicketService {
 
   private readonly baseUrl = 'http://localhost:8080/api/ticket/';
 
-
   constructor(private http: HttpClient) { }
 
   addTicket(credentials) {
@@ -60,25 +59,20 @@ export class TicketService {
   }
 
   getTicketsByParams(credentials) {
-    console.log(credentials)
+    //console.log(credentials)
     return this.http.post(this.baseUrl + 'searchTickets', {
       destination: credentials.destination,
       origin: credentials.origin,
       comeBack: credentials.comeBack,
       depart: credentials.depart
-    } , httpOptions);
+    }, httpOptions);
   }
 
   deleteTicket(id) {
-    let url = `http://localhost:8080/api/ticket/${id}`;
-    //console.log(url)
     return this.http.delete(`http://localhost:8080/api/ticket/${id}`, httpOptions).subscribe(
       (returnObject: string) => {
-        //console.log(returnObject)
-        //location.reload();
       }, (error: HttpErrorResponse) => {
         //console.log(error);
-        //location.reload();
       });
   }
 

@@ -72,16 +72,11 @@ export class AddTicketComponent implements OnInit {
     console.log(credentials);
     this.ticketService.addTicket(credentials).subscribe(
       (returnObject: string) => {
-        console.log('radi ovde');
-        console.log(returnObject);
         location.reload();
       },
       (error: HttpErrorResponse) => {
-        //console.log(error.error.massage);
         this.errorMsg = error.error.massage;
-        //alert(error.error.massage);
       }
     );
-    //location.reload();
   }
 }

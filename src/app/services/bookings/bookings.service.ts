@@ -27,11 +27,9 @@ export class BookingsService {
       .subscribe(
         (returnObject: string) => {
           console.log(returnObject);
-          //location.reload();
         },
         (error: HttpErrorResponse) => {
           console.log(error);
-          //location.reload();
         }
       );
   }
@@ -42,11 +40,9 @@ export class BookingsService {
       .subscribe(
         (returnObject: string) => {
           console.log(returnObject);
-          //location.reload();
         },
         (error: HttpErrorResponse) => {
           console.log(error);
-          //location.reload();
         }
       );
   }

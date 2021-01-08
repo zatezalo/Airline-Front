@@ -23,7 +23,7 @@ export class BookingsComponent implements OnInit {
       this.user = user;
     })
   }
-  //Treba dodati da bi radilo 
+  
   addBooking(id) {
     this.bookingService.addBooking(id);
     location.reload();

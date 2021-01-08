@@ -11,4 +11,4 @@
 
 <app-search-tickets *ngIf="user.userType === 'USER'"></app-search-tickets>
 
-<app-all-tickets></app-all-tickets>
+<app-all-tickets *ngIf="user.userType === 'ADMIN'"></app-all-tickets>

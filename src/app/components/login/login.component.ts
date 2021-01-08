@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,6 +12,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
+  errorMsg:string;
 
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
@@ -34,7 +36,10 @@ export class LoginComponent implements OnInit {
     //console.log(credentials);
     this.authService.login(credentials).subscribe(data => {
       this.router.navigate(['/home'])
-    })
+    },
+    (error: HttpErrorResponse) => {
+      this.errorMsg = error.error.massage;
+    });
   }
 
 

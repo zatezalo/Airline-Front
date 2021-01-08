@@ -17,6 +17,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Submit</button>
+        <div *ngIf="errorMsg.length > 0" class="mt-2 text-danger alert alert-danger">{{errorMsg}}</div>
 
     </form>
 

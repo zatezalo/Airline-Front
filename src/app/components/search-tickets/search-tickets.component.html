@@ -83,3 +83,45 @@
     Sarch For Tickets
   </button>
 </form>
+
+<div class="table-responsive-md">
+
+  <table class="table">
+      <thead>
+          <tr>
+              <th scope="col">Company</th>
+              <th scope="col">Origin</th>
+              <th scope="col">Destination</th>
+              <th scope="col">Depart</th>
+              <th scope="col">Return</th>
+              <th scope="col">One way</th>
+              <th scope="col">Count</th>
+              <th scope="col">Options</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let ticket of tickets">
+              <td><a href="company/{{ticket.company.id}}">{{ ticket.company.name }}</a></td>
+              <td>{{ ticket.flight.origin.name }}</td>
+              <td>{{ ticket.flight.destination.name }}</td>
+              <td>{{ ticket.depart | date:'d/MMMM/y' }}</td>
+              <td>{{ ticket.comeBack | date:'d/MMMM/y' }} </td>
+              <td>{{ ticket.oneWay }}</td>
+              <td>{{ ticket.availableCount }}</td>
+              <td class="">
+                  <form [formGroup]="bookingForm" (ngSubmit)="submitAddForm(bookingForm.value, ticket.id)">
+                      <input formControlName="numberOfTickets" *ngIf="user.userType === 'USER'" type="number" min="1"
+                          max="{{ ticket.availableCount }}" class="mr-2" style="width: 50px;">
+                      <input formControlName="username" type="hidden" [(ngModel)]="user.username">
+                      <button *ngIf="user.userType === 'USER'" type="submit" [disabled]="!bookingForm.valid"
+                          class="btn btn-success text-light "><i class="fas fa-plus"></i></button>
+                  </form>
+                  <a *ngIf="user.userType === 'ADMIN'" href="ticket/{{ticket.id}}"
+                      class="btn btn-success text-light mr-2 "><i class="fas fa-edit "></i></a>
+                  <a *ngIf="user.userType === 'ADMIN'" (click)="deleteTicket(ticket.id)"
+                      class="btn btn-danger text-light "><i class="far fa-trash-alt"></i></a>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
